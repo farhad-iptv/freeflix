@@ -137,6 +137,41 @@
                 border-radius: 10px;
             }
         }
+
+        /* Loader styles */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2a2a2a;
+            z-index: 1000; /* On top of everything */
+            opacity: 1;
+        }
+
+        .loader div {
+            width: 15px;
+            height: 15px;
+            margin: 3px;
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        .loader div:nth-child(1) { background-color: #ff3d00; animation-delay: 0s; }
+        .loader div:nth-child(2) { background-color: #ffd600; animation-delay: 0.2s; }
+        .loader div:nth-child(3) { background-color: #76ff03; animation-delay: 0.4s; }
+        .loader div:nth-child(4) { background-color: #00e5ff; animation-delay: 0.6s; }
+        .loader div:nth-child(5) { background-color: #d500f9; animation-delay: 0.8s; }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
     </style>
 </head>
 <body>
@@ -144,6 +179,15 @@
         TOFFEE WEB Portal
         <hr class="hr">
     </header>
+
+ <!-- Loader -->
+ <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
 
     <div class="tv-container">
         <div class="player" id="player">
@@ -189,6 +233,9 @@
                 channelItem.addEventListener('click', () => loadChannelInIframe(channel.url));
                 channelList.appendChild(channelItem);
             });
+             // Show content and hide loader after rendering
+             document.querySelector('.tv-container').style.opacity = 1; // Fade in the content
+            document.querySelector('.loader').style.display = 'none'; // Hide the loader
         }
 
         // Function to load the selected channel URL into the iframe
@@ -196,6 +243,8 @@
             const player = document.getElementById('player');
             player.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
         }
+
+        
 
         // Fetch the playlist from the external file
         fetch('playlist.m3u8')
@@ -206,5 +255,6 @@
             })
             .catch(error => console.error('Error fetching the playlist:', error));
     </script>
+    
 </body>
 </html>
