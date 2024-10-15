@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1 tvg-logo="https://image.pixahunt.com/graphics/long/Pixahunt-9beb581fe5a734755f596f63c18670ac.webp" group-title="Nayeem's Zee5",T Sports 01
+https://allinoneott.com/live/player.php?url=https://live-cdn.tsports.com/live-01/index.m3u8
+#EXTINF:-1 tvg-logo="https://image.pixahunt.com/graphics/long/Pixahunt-9beb581fe5a734755f596f63c18670ac.webp" group-title="Nayeem's Zee5",T Sports 02
+https://allinoneott.com/live/player.php?url=https://live-cdn.tsports.com/live-02/index.m3u8
