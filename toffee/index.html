@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JagoBD Live</title>
+    <title>TOFFEE Live</title>
 
     <!-- Base CSS for Styling -->
     <style>
@@ -141,7 +141,7 @@
 </head>
 <body>
     <header>
-        JagoBD WEB Portal
+        TOFFEE WEB Portal
         <hr class="hr">
     </header>
 
@@ -198,7 +198,7 @@
         }
 
         // Fetch the playlist from the external file
-        fetch('https://raw.githubusercontent.com/nayeem086/playlists/7b46d486e2eac8558f32fefc6e008094bb98d6c8/bdcast.m3u')
+        fetch('playlist.m3u8')
             .then(response => response.text())
             .then(playlist => {
                 const channels = parseM3U8(playlist);
