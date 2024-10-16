@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JagoBD Live</title>
 
+    <!-- Base CSS for Styling -->
     <style>
-        /* Base styles */
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column; /* Set column direction for body */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #2a2a2a;
-            overflow: hidden; /* Prevent scroll during loading */
+            background-color: #464646;
         }
 
         header {
@@ -41,90 +40,39 @@
             height: 80%;
             max-width: 1200px;
             flex-direction: column;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 1s; /* Fade-in effect */
         }
 
-        /* Loader styles */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #2a2a2a;
-            z-index: 1000; /* On top of everything */
-            opacity: 1;
-        }
-
-        .loader div {
-            width: 15px;
-            height: 15px;
-            margin: 3px;
-            border-radius: 50%;
-            animation: bounce 0.6s infinite alternate;
-        }
-
-        .loader div:nth-child(1) { background-color: #ff3d00; animation-delay: 0s; }
-        .loader div:nth-child(2) { background-color: #ffd600; animation-delay: 0.2s; }
-        .loader div:nth-child(3) { background-color: #76ff03; animation-delay: 0.4s; }
-        .loader div:nth-child(4) { background-color: #00e5ff; animation-delay: 0.6s; }
-        .loader div:nth-child(5) { background-color: #d500f9; animation-delay: 0.8s; }
-
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-20px); }
-        }
-
-        /* Responsive channel list with more columns */
         .channel-list {
             width: 100%;
-            background: #1e1e1e;
+            background: #333;
             color: white;
-            padding: 20px;
-            display: grid;
-            grid-gap: 20px;
-            box-sizing: border-box;
-            border-radius: 10px;
             overflow-y: auto;
+            padding: 10px;
+            box-sizing: border-box;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            /* Dynamic columns based on screen size */
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         }
 
         .channel-item {
-            background: #333;
-            border-radius: 12px;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            margin-bottom: 10px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.3s;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
 
         .channel-item img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            border: 5px solid #828282;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-
-        .channel-item span {
-            font-size: 14px;
-            color: #fff;
-            text-align: center;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 8px;
         }
 
         .channel-item:hover {
-            transform: translateY(-5px);
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: #444;
+            transform: scale(1.05);
         }
 
         .player {
@@ -136,18 +84,18 @@
             align-items: center;
             box-sizing: border-box;
             flex-grow: 1;
-            margin-bottom: 20px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            border-radius: 10px;
+            color: white;
+            font-size: 18px;
         }
 
-        /* Clappr player will be styled dynamically */
-        #player {
+        .player iframe {
             width: 100%;
             height: 100%;
+            border: none;
+            border-radius: 8px;
         }
 
-        /* Responsive styles */
         @media (min-width: 768px) {
             .tv-container {
                 flex-direction: row;
@@ -162,7 +110,7 @@
             .player {
                 width: 70%;
                 border-radius: 10px;
-                margin-right: 20px;
+                margin-right: 10px;
             }
         }
 
@@ -171,24 +119,24 @@
                 flex-direction: column;
             }
 
+            .channel-item img {
+                width: 70px;
+                height: 70px;
+                border-radius: 10px;
+            }
+
             .player {
                 border-radius: 10px;
             }
 
             .channel-list {
-                max-height: 55%;
+                max-height: 60%;
                 width: 100%;
                 overflow-y: scroll;
-                margin-top: 8px;
+                margin-top: 20px;
                 border-radius: 10px;
             }
-
-            .channel-item img {
-                width: 70px;
-                height: 70px;
-            }
         }
-
     </style>
 </head>
 <body>
@@ -197,44 +145,22 @@
         <hr class="hr">
     </header>
 
-    
-
-    <!-- Loader -->
-    <div class="loader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-
     <div class="tv-container">
-        <div class="player">
-            <!-- Clappr player container -->
-            <div id="player"></div>
+        <div class="player" id="player">
+            <p>Select a channel to play</p>
         </div>
         <div class="channel-list" id="channel-list"></div>
     </div>
     <a href='https://www.versicherungen.at/tier-krankenversicherung/'>Tier-Krankenversicherung</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=a0b1c4f79c8546c28135efffddaecd9063436b27'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1249358/t/5"></script>
-   
-    
-    <center>
-        <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
-        <script type="text/javascript">sc_online_i(1700767,"ffffff","e61c1c");</script>
-        
-        <noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
-    </center>
-    <!-- Clappr JS -->
-    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1249358/t/5"></script>
+    <!-- JavaScript for handling channel clicks and displaying URLs in iframe -->
     <script>
         // Function to parse the playlist
         function parseM3U8(playlist) {
             const lines = playlist.split('\n');
             let channels = [];
             let currentChannel = {};
-            
+
             lines.forEach(line => {
                 if (line.startsWith('#EXTINF')) {
                     const name = line.split(',')[1];
@@ -247,7 +173,7 @@
                     currentChannel = {};
                 }
             });
-            
+
             return channels;
         }
 
@@ -261,29 +187,15 @@
                     <img src="${channel.logo}" alt="${channel.name}">
                     <span>${channel.name}</span>
                 `;
-                channelItem.addEventListener('click', () => playChannel(channel.url));
+                channelItem.addEventListener('click', () => loadChannelInIframe(channel.url));
                 channelList.appendChild(channelItem);
             });
-
-            // Show content and hide loader after rendering
-            document.querySelector('.tv-container').style.opacity = 1; // Fade in the content
-            document.querySelector('.loader').style.display = 'none'; // Hide the loader
         }
 
-        // Initialize Clappr player with default stream
-        let player = new Clappr.Player({
-            parentId: '#player',
-            source: 'https://mtlivestream.com/asian/ytlive/index.m3u8', // Set default stream
-            width: '100%',
-            height: '100%',
-            autoPlay: true,
-            mute: false,
-        });
-
-        // Function to play the selected channel
-        function playChannel(url) {
-            player.load(url);
-            player.play();
+        // Function to load the selected channel URL into the iframe
+        function loadChannelInIframe(url) {
+            const player = document.getElementById('player');
+            player.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
         }
 
         // Fetch the playlist from the external file
@@ -295,6 +207,6 @@
             })
             .catch(error => console.error('Error fetching the playlist:', error));
     </script>
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </body>
 </html>
