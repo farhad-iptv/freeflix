@@ -1,5 +1,8 @@
 
 #EXTM3U
+#EXTINF:0 tvg-logo="https://i.ibb.co.com/cDm2rBh/icon.png" group-title="JagoBD",FREE FLIX
+http://freeflix.run.place/into/master.m3u8
+
 #EXTINF:-1 tvg-id="9864cbf691c0" tvg-name="LIVE1 VIP" tvg-country="IN" tvg-logo="https://images.toffeelive.com/images/program/301636/logo/240x240/mobile_logo_148933001727851627.png" tvg-chno="9864cbf691c0" group-title="",LIVE1 VIP
 https://stream.imotv.online/toffe/live.php?id=9864cbf691c0&e=.m3u8
 #EXTINF:-1 tvg-id="a01c29a24287" tvg-name="LIVE2 VIP" tvg-country="IN" tvg-logo="https://images.toffeelive.com/images/program/301637/logo/240x240/mobile_logo_418608001727851921.png" tvg-chno="a01c29a24287" group-title="",LIVE2 VIP
