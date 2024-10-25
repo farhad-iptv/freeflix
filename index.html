@@ -173,6 +173,28 @@
             background-color: #555;
         }
 
+        /* Custom scrollbar style */
+        .channel-slider::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .channel-slider::-webkit-scrollbar-track {
+            background: #ddd;
+            border-radius: 10px;
+        }
+
+        .channel-slider::-webkit-scrollbar-thumb {
+            background-color: #1cb711;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .channel-slider::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .tv-container iframe {
@@ -198,11 +220,15 @@
             }
 
             .channel-slider-container{
-                max-width: 320px;
+                max-width: 400px;
             }
 
             .tv-container iframe{
                 height: 220px;
+            }
+
+            .scroll-button{
+                display: none;
             }
 
             
@@ -260,7 +286,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/en/1/12/Ten_Sports_Logo.png" alt="asports">
                 </div>
 
-                <div class="img-div" onclick="openModal(['http://jagobd.run.place/videojs.html?stream=http://unity-gaming.net:8080/live/testforflorin/h3jR9MKh/17967.m3u8'])">
+                <div class="img-div" onclick="openModal(['https://jagobd.run.place/videojs.html?stream=http://unity-gaming.net:8080/live/testforflorin/h3jR9MKh/17967.m3u8'])">
                     <img src="https://skymediaglobal.b-cdn.net/wp-content/uploads/2020/09/Sky-Sports-Cricket-2020-logo-250.png" alt="skycric">
                 </div>
 
@@ -268,7 +294,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvaQWvQGNUE12nC2tclWdOSSWid5nbZ8u-fA&s" alt="willow">
                 </div>
 
-                <div class="img-div" onclick="openModal(['http://jagobd.run.place/videojs.html?stream=http://unity-gaming.net:8080/live/testforflorin/h3jR9MKh/16960.m3u8'])">
+                <div class="img-div" onclick="openModal(['https://jagobd.run.place/videojs.html?stream=http://unity-gaming.net:8080/live/testforflorin/h3jR9MKh/16960.m3u8'])">
                     <img src="https://sc.dish.com/shared/images/station-logos/WLXTR.png" alt="willowxtra">
                 </div>
 
